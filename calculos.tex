@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{estilo}
+\hypersetup{pdftitle={Resorte sobre un aro: calculos con la notacion de los folios}}
+\begin{document}
+\encabeza{DOCUMENTO DE CÁLCULOS · NOTACIÓN DE LOS FOLIOS}{Cálculos de los apartados\ b), c) y d)}
+\nota{Método: expresar $x,y$, derivar, calcular $T$ y $U$, aplicar Euler--Lagrange y liberar la ligadura con $f=r-R$. El ángulo $\phi$ corresponde al resorte, no al radio que une $O$ con la masa.}
+
+\section{Apartado b): de las coordenadas a \texorpdfstring{$L=T-U$}{L=T-U}}
+Se toman exactamente las coordenadas de los apuntes:
+\begin{equation}
+ x=R\cos\theta+l\sin\phi,\qquad y=R\sin\theta-l\cos\phi.
+\end{equation}
+Al derivar respecto al tiempo,
+\begin{align}
+ \dot x&=-R\dot\theta\sin\theta+\dot l\sin\phi+l\dot\phi\cos\phi,\\
+ \dot y&=R\dot\theta\cos\theta-\dot l\cos\phi+l\dot\phi\sin\phi.
+\end{align}
+Se elevan al cuadrado y se conservan todos los términos cruzados:
+\begin{align}
+ \dot x^2={}&R^2\dot\theta^2\sin^2\theta+\dot l^2\sin^2\phi+l^2\dot\phi^2\cos^2\phi\nonumber\\
+ &-2R\dot\theta\dot l\sin\theta\sin\phi
+ -2Rl\dot\theta\dot\phi\sin\theta\cos\phi
+ +2l\dot l\dot\phi\sin\phi\cos\phi,\\
+ \dot y^2={}&R^2\dot\theta^2\cos^2\theta+\dot l^2\cos^2\phi+l^2\dot\phi^2\sin^2\phi\nonumber\\
+ &-2R\dot\theta\dot l\cos\theta\cos\phi
+ +2Rl\dot\theta\dot\phi\cos\theta\sin\phi
+ -2l\dot l\dot\phi\sin\phi\cos\phi.
+\end{align}
+Los últimos términos se cancelan. Usando $\sin^2 a+\cos^2a=1$, $\cos(\theta-\phi)=\cos\theta\cos\phi+\sin\theta\sin\phi$ y $\sin(\phi-\theta)=-\sin(\theta-\phi)$, resulta
+\begin{equation}
+ v^2=\dot x^2+\dot y^2=R^2\dot\theta^2+\dot l^2+l^2\dot\phi^2
+ -2R\dot\theta[\dot l\cos(\theta-\phi)+l\dot\phi\sin(\theta-\phi)].
+\end{equation}
+\textbf{Corrección del folio.} Con las $x,y$ elegidas, el término con $\dot\theta\dot l$ lleva $-\cos(\theta-\phi)$ y el de $\dot\theta\dot\phi$ lleva $-\sin(\theta-\phi)$. Cambiarlos altera la lagrangiana; no es una simplificación equivalente.
+
+Las energías, con la misma notación de los apuntes, son
+\begin{equation}
+ T=\tfrac12mv^2,\qquad U_g=mgy=mg(R\sin\theta-l\cos\phi),\qquad
+ U_m=\tfrac12k(l-l_0)^2,\qquad U=U_g+U_m.
+\end{equation}
+Con $\Delta=\theta-\phi$, se obtiene
+\begin{resultado}
+\begin{equation}
+\begin{aligned}
+ L=T-U={}&\frac m2\{R^2\dot\theta^2+\dot l^2+l^2\dot\phi^2
+ -2R\dot\theta[\dot l\cos\Delta+l\dot\phi\sin\Delta]\}\\
+ &-mg(R\sin\theta-l\cos\phi)-\frac k2(l-l_0)^2.
+\end{aligned}
+\end{equation}
+\end{resultado}
+
+\newpage
+\section{Apartado c): Euler--Lagrange y energía}
+Se aplica a cada coordenada $q_i\in\{l,\theta,\phi\}$ la ecuación
+\begin{equation}
+ \frac{\dd}{\dd t}\left(\frac{\partial L}{\partial\dot q_i}\right)
+ -\frac{\partial L}{\partial q_i}=0.
+\end{equation}
+\textbf{Derivadas parciales.} Con $\Delta=\theta-\phi$,
+\begin{align}
+ \frac{\partial L}{\partial\dot l}&=m(\dot l-R\dot\theta\cos\Delta), &
+ \frac{\partial L}{\partial l}&=ml\dot\phi^2-mR\dot\theta\dot\phi\sin\Delta+mg\cos\phi-k(l-l_0),\\
+ \frac{\partial L}{\partial\dot\theta}&=m(R^2\dot\theta-R\dot l\cos\Delta-Rl\dot\phi\sin\Delta), &
+ \frac{\partial L}{\partial\theta}&=mR\dot\theta(\dot l\sin\Delta-l\dot\phi\cos\Delta)-mgR\cos\theta,\\
+ \frac{\partial L}{\partial\dot\phi}&=m(l^2\dot\phi-Rl\dot\theta\sin\Delta), &
+ \frac{\partial L}{\partial\phi}&=-mR\dot\theta(\dot l\sin\Delta-l\dot\phi\cos\Delta)-mgl\sin\phi.
+\end{align}
+Al derivar los momentos hay que usar $\dot\Delta=\dot\theta-\dot\phi$. Por ejemplo,
+\begin{equation}
+ \frac{\dd}{\dd t}\frac{\partial L}{\partial\dot l}
+ =m[\ddot l-R\ddot\theta\cos\Delta+R\dot\theta(\dot\theta-\dot\phi)\sin\Delta].
+\end{equation}
+Se resta $\partial L/\partial l$ y se cancelan los términos con $\dot\theta\dot\phi$. Procediendo de igual modo para las otras coordenadas y dividiendo por $m$, $mR$ y $ml$, respectivamente, quedan
+\begin{align}
+ E_l\equiv{}&\ddot l-l\dot\phi^2-R\ddot\theta\cos\Delta+R\dot\theta^2\sin\Delta
+ -g\cos\phi+\tfrac km(l-l_0)=0,\\
+ E_\theta\equiv{}&R\ddot\theta-\ddot l\cos\Delta-l\ddot\phi\sin\Delta
+ -2\dot l\dot\phi\sin\Delta+l\dot\phi^2\cos\Delta+g\cos\theta=0,\\
+ E_\phi\equiv{}&l\ddot\phi+2\dot l\dot\phi-R\ddot\theta\sin\Delta
+ -R\dot\theta^2\cos\Delta+g\sin\phi=0.
+\end{align}
+\textbf{Condición del enganche.} La combinación $E_\theta+E_l\cos\Delta+E_\phi\sin\Delta$ cancela las aceleraciones y da $(k/m)(l-l_0)\cos\Delta=0$. Se ha usado $\cos\Delta\cos\phi-\sin\Delta\sin\phi=\cos\theta$. Es el balance tangencial de un enganche sin masa. En la rama exterior regular,
+\begin{equation}
+ \phi=\theta+\frac\pi2,\qquad \dot\theta=\dot\phi,\qquad
+ \ddot l=(R+l)\dot\phi^2+g\cos\phi-\frac km(l-l_0),\quad
+ \ddot\phi=-\frac{2\dot l\dot\phi+g\sin\phi}{R+l}.
+\end{equation}
+En fuerza elástica nula la condición pierde rango; se continúa por continuidad la rama elegida. Hay tres coordenadas geométricas, pero sólo dos movimientos inerciales independientes en este modelo ideal.
+
+\textbf{Constante del movimiento.} Como $L$ no depende del tiempo, se conserva $E=\sum_i\dot q_i(\partial L/\partial\dot q_i)-L$. Los momentos anteriores dan $\sum_i\dot q_i(\partial L/\partial\dot q_i)=2T$, de donde
+\begin{equation}
+ \boxed{E=T+U=\frac m2(\dot x^2+\dot y^2)+mg(R\sin\theta-l\cos\phi)+\frac k2(l-l_0)^2.}
+\end{equation}
+
+\newpage
+\section{Apartado d): ligadura \texorpdfstring{$f=r-R$}{f=r-R} y fuerza normal}
+Se sigue el planteamiento indicado en el folio: se libera el radio del enganche, se toman las coordenadas $(r,\theta,l,\phi)$ y se impone $f=r-R=0$. El símbolo $r$ se usa aquí para el \emph{radio del enganche}, no para la distancia de la masa al centro.
+\begin{equation}
+ x=r\cos\theta+l\sin\phi,\qquad y=r\sin\theta-l\cos\phi.
+\end{equation}
+Antes de imponer la ligadura se calculan
+\begin{align}
+ \dot x&=\dot r\cos\theta-r\dot\theta\sin\theta+\dot l\sin\phi+l\dot\phi\cos\phi,\\
+ \dot y&=\dot r\sin\theta+r\dot\theta\cos\theta-\dot l\cos\phi+l\dot\phi\sin\phi.
+\end{align}
+La lagrangiana auxiliar es $L'=L+\lambda f$, con $L$ expresada ahora en las coordenadas liberadas:
+\begin{resultado}
+\begin{equation}
+ L'=\frac m2(\dot x^2+\dot y^2)-mg(r\sin\theta-l\cos\phi)-\frac k2(l-l_0)^2+\lambda(r-R).
+\end{equation}
+\end{resultado}
+Al expandir $\dot x^2+\dot y^2$, esta expresión equivale a
+\begin{equation}
+ L'=L\big|_{R\to r}+\frac m2\dot r^2
+ +m\dot r[-\dot l\sin\Delta+l\dot\phi\cos\Delta]+\lambda(r-R).
+\end{equation}
+\textbf{Precaución al liberar la ligadura.} Sustituir sólo $R$ por $r$ en la expresión de b) omitiría los términos con $\dot r$. Debe derivarse primero la nueva posición.
+
+Para la coordenada $r$ se obtiene
+\begin{align}
+ \frac{\partial L'}{\partial\dot r}&=m(\dot r-\dot l\sin\Delta+l\dot\phi\cos\Delta),\\
+ \frac{\partial L'}{\partial r}&=m(r\dot\theta^2-\dot\theta\dot l\cos\Delta-l\dot\theta\dot\phi\sin\Delta)
+ -mg\sin\theta+\lambda.
+\end{align}
+La ecuación de Euler--Lagrange de $r$, seguida de $r=R$, $\dot r=\ddot r=0$, da
+\begin{equation}
+ \lambda=m[-R\dot\theta^2-\ddot l\sin\Delta+2\dot l\dot\phi\cos\Delta
+ +l\ddot\phi\cos\Delta+l\dot\phi^2\sin\Delta+g\sin\theta].
+\end{equation}
+\textbf{Simplificación mediante Newton.} Sea $\mathbf e_r=(\cos\theta,\sin\theta)$. El resultado anterior es $\lambda=m(\ddot{\mathbf x}\cdot\mathbf e_r+g\sin\theta)$. Se proyecta sobre $\mathbf e_r$ la ecuación de Newton para la masa:
+\begin{equation}
+ m\ddot{\mathbf x}=-k(l-l_0)(\sin\phi,-\cos\phi)+(0,-mg).
+\end{equation}
+Usando $(\sin\phi,-\cos\phi)\cdot\mathbf e_r=-\sin\Delta$, resulta
+\begin{equation}
+ \boxed{\lambda=k(l-l_0)\sin\Delta,\qquad
+ \mathbf F_{\rm aro\to resorte}=\lambda(\cos\theta,\sin\theta).}
+\end{equation}
+En la rama exterior $\Delta=-\pi/2$, luego $\lambda=-k(l-l_0)$. En el equilibrio inferior $\theta=-\pi/2$, $\phi=0$ y $l-l_0=mg/k$, se obtiene una reacción ascendente de módulo $mg$. No realiza trabajo, pues es perpendicular a la velocidad tangencial del enganche.
+
+\newpage
+\encabeza{APOYO A LOS SEIS ESCENARIOS}{Resultados usados en la simulación}
+\textbf{Equilibrio y pequeñas oscilaciones.} En la rama radial exterior se sustituye $\theta=\phi-\pi/2$. Entonces
+\begin{equation}
+ L=\frac m2[\dot l^2+(R+l)^2\dot\phi^2]+mg(R+l)\cos\phi-\frac k2(l-l_0)^2.
+\end{equation}
+Con $\dot l=\dot\phi=0$, las ecuaciones dan $\phi_*=0$, $\theta_*=-\pi/2$ y $l_*=l_0+mg/k$. Escribiendo $l=l_*+u$, $\phi=\varepsilon$ y despreciando productos de perturbaciones,
+\begin{equation}
+ \ddot u+\frac kmu=0,\qquad \ddot\varepsilon+\frac g{R+l_*}\varepsilon=0,
+ \qquad \omega_l=\sqrt{k/m},\quad\omega_\phi=\sqrt{g/(R+l_*)}.
+\end{equation}
+La tabla de 4.1 usa $l(0)=l_*$, $\phi(0)=10^{-3}$ rad, $\theta(0)=\phi(0)-\pi/2$ y velocidades nulas, midiendo el tiempo entre cruces ascendentes de $\phi=0$. Coincide con $2\pi\sqrt{(R+l_*)/g}$ a la precisión mostrada. En el movimiento radial puro de 4.2, $u(t)=0.08\cos(\omega_lt)$ es exacta.
+
+\textbf{Relación 2:1.} Para el caso 4.3,
+\begin{equation}
+ \omega_l=2\omega_\phi\quad\Longrightarrow\quad
+ \frac km=\frac{4g}{R+l_0+mg/k}\quad\Longrightarrow\quad
+ k=\frac{3mg}{R+l_0}=6.54\ \mathrm{N/m}.
+\end{equation}
+Se inicia un ángulo pequeño distinto de cero, porque el movimiento radial puro es una solución invariante. El crecimiento angular procede de la energía radial.
+
+\textbf{Límites de los casos 4.4 y 4.5.} Para $k\to\infty$ con $l(0)-l_0=O(1/k)$ y velocidad radial pequeña, $l\to l_0$ y se aproxima el péndulo $\ddot\phi+[g/(R+l_0)]\sin\phi=0$. Si $g=0$, $\phi$ es cíclica en la lagrangiana reducida y se conserva $H=m(R+l)^2\dot\phi$. El giro es más rápido cuando la masa se acerca al centro.
+
+\textbf{Enganche con masa, caso 4.6.} Añadir una masa $\mu>0$ al enganche, cuyo resorte sigue sin masa, modifica la lagrangiana a
+\begin{equation}
+ L_\mu=L+\frac12\mu R^2\dot\theta^2-\mu gR\sin\theta.
+\end{equation}
+Se aplica Euler--Lagrange a las mismas tres coordenadas. La ecuación de $\theta$ gana el término $\mu R^2\ddot\theta+\mu gR\cos\theta$; las de $l$ y $\phi$ no cambian. Combinándolas, o proyectando Newton sobre la tangente del aro, se obtiene
+\begin{equation}
+ \mu R\ddot\theta=-k(l-l_0)\cos(\theta-\phi)-\mu g\cos\theta.
+\end{equation}
+Ahora los tres movimientos tienen inercia. Los datos del informe representan la misma configuración física del segundo borrador, expresada en los nuevos ángulos.
+
+\begin{tcolorbox}
+\small\textbf{Verificación y ejecución.} La simulación conserva sus seis escenas y sus controles. Los casos ideales integran las dos ecuaciones reducidas y reconstruyen $\theta=\phi-\pi/2$. El caso con inercia integra las tres ecuaciones de Euler--Lagrange. Las identidades cinemáticas y las ecuaciones se contrastan mediante cálculos numéricos independientes. Las figuras y cifras de las escenas corresponden al mismo movimiento físico del segundo borrador. El archivo MATLAB no se ha ejecutado en MATLAB durante la preparación.
+\end{tcolorbox}
+\end{document}

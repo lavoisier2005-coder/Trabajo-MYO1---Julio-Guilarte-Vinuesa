@@ -1,0 +1,27 @@
+RESORTE SOBRE UN ARO - NOTACION DE LOS FOLIOS
+
+informe.pdf   Informe breve con resultados y seis escenarios.
+calculos.pdf  Calculos detallados de b), c) y d).
+
+Coordenadas:
+x=R*cos(theta)+l*sin(phi)
+y=R*sin(theta)-l*cos(phi)
+Theta se mide desde OX; phi es la inclinacion del resorte desde la vertical.
+En d), r es el radio liberado del enganche y la ligadura es f=r-R.
+Se ha corregido la expansion de los terminos cruzados del folio para que
+la lagrangiana sea coherente con estas x e y.
+
+MATLAB: abrir esta carpeta y escribir simulacion_aro_resorte
+Tambien: simulacion_aro_resorte(3) para abrir directamente el tercer caso.
+Una sola escena, con Pausa, Reiniciar y campos m, k, R, l0. Sin toolboxes.
+MATLAB R2016b o posterior. La salida q usa [l,theta,phi], en m y rad.
+
+LATEX: subir informe.tex, calculos.tex, estilo.sty y figuras/ a Overleaf.
+Seleccionar el documento principal y compilar con pdfLaTeX dos veces.
+
+Las tres coordenadas del enganche ideal incluyen una condicion sin inercia;
+en la rama exterior, phi=theta+pi/2. El caso 6 anade masa al enganche y
+se integra con tres ecuaciones de Euler-Lagrange independientes.
+Las escenas conservan las configuraciones fisicas del segundo borrador.
+Las ecuaciones se han comprobado mediante calculo numerico independiente.
+El archivo .m no se ha ejecutado dentro de MATLAB durante la preparacion.

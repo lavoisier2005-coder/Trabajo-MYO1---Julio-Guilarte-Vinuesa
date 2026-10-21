@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{estilo}
+\hypersetup{pdftitle={Resorte sobre un aro: informe}}
+\setcounter{tocdepth}{1}
+\begin{document}
+\encabeza{INFORME · 21 OCTUBRE 2026}{Resorte con lastre\ sobre un aro vertical}
+{\small\sffamily Julio Guilarte Vinuesa\hfill Dinámica lagrangiana y simulación}
+\vspace{2pt}
+\begin{tcolorbox}
+\small\textbf{Índice}\quad
+\hyperref[sec:b]{1. Apartado b)}\quad
+\hyperref[sec:c]{2. Apartado c)}\quad
+\hyperref[sec:d]{3. Apartado d)}\quad
+\hyperref[sec:sim]{4. Simulación}
+\end{tcolorbox}
+
+\section{Apartado b)}\label{sec:b}
+Se emplean las coordenadas $q=(l,\theta,\phi)$ de los folios: $l$ es la longitud del resorte, $\theta$ sitúa el enganche desde $OX$ y $\phi$ mide la inclinación del resorte desde la vertical descendente. Con esta convención,
+\begin{minipage}[c]{.57\linewidth}
+\begin{align*}
+ x&=R\cos\theta+l\sin\phi,\\
+ y&=R\sin\theta-l\cos\phi,\\
+ \dot x&=-R\dot\theta\sin\theta+\dot l\sin\phi+l\dot\phi\cos\phi,\\
+ \dot y&=R\dot\theta\cos\theta-\dot l\cos\phi+l\dot\phi\sin\phi.
+\end{align*}
+\end{minipage}\hfill
+\begin{minipage}[c]{.39\linewidth}
+\includegraphics[width=\linewidth]{figuras/coordenadas.pdf}
+\end{minipage}
+
+Escribiendo $\Delta=\theta-\phi$, la lagrangiana es
+\begin{resultado}
+\begin{equation}
+\begin{aligned}
+ L={}&\frac m2\bigl\{R^2\dot\theta^2+\dot l^2+l^2\dot\phi^2
+ -2R\dot\theta[\dot l\cos\Delta+l\dot\phi\sin\Delta]\bigr\}\\
+ &-mg(R\sin\theta-l\cos\phi)-\frac k2(l-l_0)^2.
+\end{aligned}
+\end{equation}
+\end{resultado}
+Se ha seguido el procedimiento $v^2=\dot x^2+\dot y^2$, $T=mv^2/2$, $U=U_g+U_m$ y $L=T-U$. En la expansión del folio deben corregirse los términos cruzados: las $x,y$ indicadas producen los signos y funciones trigonométricas que aparecen arriba.
+
+\nota{Modelo: aro fijo, resorte sin masa con ley de Hooke y enganche sin masa ni rozamiento. La descripción usa tres coordenadas; el balance del enganche impone una condición entre ellas, que se obtiene en c). Se estudia la rama exterior.}
+
+\newpage
+\section{Apartado c)}\label{sec:c}
+Aplicando $\dd(\partial L/\partial\dot q_i)/\dd t-\partial L/\partial q_i=0$ a $l$, $\theta$ y $\phi$, respectivamente, se obtiene
+\begin{resultado}
+\begin{align}
+ 0={}&\ddot l-l\dot\phi^2-R\ddot\theta\cos\Delta
+       +R\dot\theta^2\sin\Delta-g\cos\phi+\frac km(l-l_0),\\
+ 0={}&R\ddot\theta-\ddot l\cos\Delta-l\ddot\phi\sin\Delta
+       -2\dot l\dot\phi\sin\Delta+l\dot\phi^2\cos\Delta+g\cos\theta,\\
+ 0={}&l\ddot\phi+2\dot l\dot\phi-R\ddot\theta\sin\Delta
+       -R\dot\theta^2\cos\Delta+g\sin\phi.
+\end{align}
+\end{resultado}
+Estas ecuaciones implican $k(l-l_0)\cos\Delta=0$, el balance tangencial del enganche sin inercia. En la rama radial exterior regular resulta $\phi=\theta+\pi/2$, continuada por continuidad cuando la fuerza elástica se anula. Quedan las ecuaciones equivalentes
+\begin{equation}
+ \ddot l=(R+l)\dot\phi^2+g\cos\phi-\frac km(l-l_0),\qquad
+ \ddot\phi=-\frac{2\dot l\dot\phi+g\sin\phi}{R+l}.
+\end{equation}
+La energía, constante porque $L$ no depende explícitamente del tiempo, es
+\begin{equation}
+ \boxed{E=T+U=\frac m2(\dot x^2+\dot y^2)
+ +mg(R\sin\theta-l\cos\phi)+\frac k2(l-l_0)^2.}
+\end{equation}
+
+\section{Apartado d)}\label{sec:d}
+Se sigue la ligadura del folio, $f=r-R=0$, donde $r$ es ahora el radio del enganche. Se sustituye $R\to r$ en $x,y$ y se deriva antes de imponer $r=R$. La lagrangiana auxiliar puede escribirse como
+\begin{resultado}
+\begin{equation}
+ L'=L\big|_{R\to r}+\frac m2\dot r^2
+ +m\dot r[-\dot l\sin\Delta+l\dot\phi\cos\Delta]+\lambda(r-R).
+\end{equation}
+\begin{equation}
+ \boxed{\mathbf F_{\rm aro\to resorte}=\lambda(\cos\theta,\sin\theta),\qquad
+ \lambda=k(l-l_0)\sin\Delta.}
+\end{equation}
+\end{resultado}
+El símbolo $L|_{R\to r}$ representa la expresión de b) con esa sustitución; los términos con $\dot r$ proceden de derivar las nuevas $x,y$. En la rama exterior, $\Delta=-\pi/2$, se recupera $\lambda=-k(l-l_0)$: reacción hacia el centro en tracción y hacia fuera en compresión.
+
+\newpage
+\section{Simulación}\label{sec:sim}
+Una única ventana representa el aro, el enganche, el resorte y la masa. El menú permite elegir los seis escenarios; los campos $m,k,R,l_0$ permiten variar \textbf{un parámetro cada vez}. No se muestran gráficas de energía, errores ni otras funciones.
+
+\nota{Referencia: $m=0.20$ kg, $k=20$ N/m, $R=0.50$ m, $l_0=0.40$ m y $g=9.81$ m/s$^2$. Se usa $l_*=l_0+mg/k$; las velocidades iniciales son nulas salvo indicación. Las imágenes son instantáneas, no gráficas funcionales.}
+
+\escena{Oscilación acoplada}{1}{
+\textbf{Preparación.} $l(0)=l_*+0.06$ m, $\phi(0)=0.45$ rad y $\theta(0)=\phi(0)-\pi/2$.\\[3pt]
+\textbf{Qué observar.} La masa oscila lateralmente mientras el resorte cambia de longitud. El enganche recorre el aro y los dos movimientos se influyen mutuamente.\\[3pt]
+\textbf{Variación sistemática.} Al aumentar $m$, baja $\omega_l=\sqrt{k/m}$; al aumentar $R$ o $l_0$, baja $\omega_\phi=\sqrt{g/(R+l_*)}$. Los controles permiten contrastarlo manteniendo los otros parámetros fijos.
+
+{\scriptsize\textbf{Barrido en pequeña amplitud} ($\phi_0=10^{-3}$ rad):\par\vspace{2pt}
+\begin{tabular}{@{}lr@{}}\toprule
+Variación respecto a referencia & $T_\phi$ (s)\\\midrule
+Referencia & 2.004\\
+$m=0.40$ kg & 2.100\\
+$k=40$ N/m & 1.954\\
+$R=0.75$ m & 2.241\\
+$l_0=0.60$ m & 2.196\\\bottomrule
+\end{tabular}\par
+Periodos medidos numéricamente, variando un parámetro cada vez.}
+
+}
+\escena{Modo radial puro}{2}{
+\textbf{Preparación.} $l(0)=l_*+0.08$ m, $\phi(0)=0$ y $\theta(0)=-\pi/2$.\\[3pt]
+\textbf{Qué observar.} La masa sube y baja sin giro. Es una solución exacta, no una aproximación:\[
+ l(t)=l_0+\frac{mg}{k}+0.08\cos\!\left(\sqrt{k/m}\,t\right).
+\]
+Este escenario permite comprobar visualmente que una perturbación radial por sí sola no genera oscilación angular.
+}
+\escena{Resonancia interna 2:1}{3}{
+\textbf{Preparación.} $k=6.54$ N/m, $l(0)=0.86$ m, $\phi(0)=0.03$ rad y $\theta(0)=\phi(0)-\pi/2$.\\[3pt]
+\textbf{Qué observar.} El pequeño balanceo lateral aumenta al recibir energía del movimiento radial. La relación lineal $\omega_l=2\omega_\phi$ se alcanza cuando $k(R+l_0)/(mg)=3$.\\[3pt]
+En 25 s el ángulo llega aproximadamente a $0.267$ rad. La energía se redistribuye dentro del sistema; no hay excitación externa.
+}
+
+\newpage
+{\sffamily\scriptsize\bfseries\color{teal}4. SIMULACIÓN · CONTINUACIÓN}\par
+\escena{Límite de resorte rígido}{4}{
+\textbf{Preparación.} $k=2000$ N/m, $l(0)=l_*(k)$, $\phi(0)=0.45$ rad y $\theta(0)=\phi(0)-\pi/2$.\\[3pt]
+\textbf{Qué observar.} El movimiento se aproxima al de un péndulo de longitud $R+l_0$. La variación de longitud es inferior a $0.5$ mm en esta simulación.\\[3pt]
+El límite correcto utiliza una extensión inicial de orden $1/k$. Una extensión finita fijada al aumentar $k$ almacenaría una energía elástica creciente y daría otro régimen.
+}
+\escena{Sin gravedad}{5}{
+\textbf{Preparación.} $g=0$, $l(0)=0.50$ m, $\phi(0)=0.20$ rad, $\theta(0)=\phi(0)-\pi/2$, $\dot l(0)=0.10$ m/s y $\dot\theta(0)=\dot\phi(0)=0.70$ rad/s.\\[3pt]
+\textbf{Qué observar.} La masa gira mientras cambia su distancia al centro y dibuja una trayectoria semejante a una roseta. Se conserva también $H=m(R+l)^2\dot\phi$: al acercarse al centro gira más deprisa.\\[3pt]
+Es una variante hipotética del campo gravitatorio, manteniendo el mismo aro y resorte ideal.
+}
+\escena{Enganche con inercia}{6}{
+\textbf{Cambio explícito de modelo.} Se añade una masa $\mu=0.04$ kg al enganche; el resorte sigue sin masa. Se toma $l(0)=0.636204$ m, $\theta(0)=-1.420796$ rad y $\phi(0)=0.948879$ rad.\\[3pt]
+\textbf{Qué observar.} La orientación del resorte deja de coincidir con la dirección radial del enganche. Ahora sí existen tres grados de libertad inerciales. La nueva ecuación del enganche es\[
+ \mu R\ddot\theta=-k(l-l_0)\cos(\theta-\phi)-\mu g\cos\theta.
+\]
+Este caso permite distinguir la formulación general de tres coordenadas del límite ideal sin inercia.
+}
+
+\begin{tcolorbox}
+\small\textbf{Ejecutar.} Abrir la carpeta del archivo MATLAB y escribir\par
+\vspace{2pt}\texttt{simulacion\_aro\_resorte}\par
+\vspace{3pt}Elegir un escenario y usar \textsf{Pausa}, \textsf{Reiniciar} o \textsf{Aplicar}. No se requieren toolboxes. La derivación completa está en \emph{Cálculos de los apartados b), c) y d)}.
+\end{tcolorbox}
+\nota{Las instantáneas y cifras se han contrastado con una integración independiente en Python. El archivo MATLAB no se ha ejecutado en MATLAB durante la preparación. Se emplea un resorte ideal que admite compresión; la integración se detiene si abandona el dominio exterior usado.}
+\end{document}

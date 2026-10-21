@@ -1,0 +1,39 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{estilo}[2026 Editorial cientifica]
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[provide=*,spanish]{babel}
+\RequirePackage{lmodern}
+\RequirePackage[sc]{mathpazo}
+\RequirePackage{amsmath,amssymb,mathtools,graphicx,booktabs,array}
+\RequirePackage[margin=2.05cm,top=1.85cm,bottom=1.9cm]{geometry}
+\RequirePackage{xcolor,microtype,titlesec,fancyhdr,hyperref,enumitem,tcolorbox}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{teal}{HTML}{087F8C}
+\definecolor{coral}{HTML}{E56B54}
+\definecolor{gold}{HTML}{B88931}
+\definecolor{mist}{HTML}{F1F6F8}
+\definecolor{muted}{HTML}{5A7082}
+\color{navy}
+\hypersetup{colorlinks=true,linkcolor=teal,urlcolor=teal,pdfauthor={Julio Guilarte Vinuesa}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\sffamily\scriptsize\color{teal}\textbf{MECÁNICA ANALÍTICA}}
+\fancyhead[R]{\sffamily\scriptsize\color{muted}Resorte sobre un aro vertical}
+\fancyfoot[L]{\sffamily\scriptsize\color{muted}Julio Guilarte Vinuesa}
+\fancyfoot[R]{\sffamily\small\color{teal}\thepage}
+\renewcommand{\headrulewidth}{.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\titleformat{\section}{\sffamily\Large\bfseries\color{navy}}{\color{teal}\thesection.}{.5em}{}
+\titleformat{\subsection}{\sffamily\normalsize\bfseries\color{navy}}{\color{coral}\thesubsection}{.55em}{}
+\titlespacing*{\section}{0pt}{12pt}{7pt}
+\titlespacing*{\subsection}{0pt}{9pt}{4pt}
+\tcbset{colback=mist,colframe=mist,boxrule=0pt,arc=2pt,left=9pt,right=9pt,top=5pt,bottom=5pt}
+\newenvironment{resultado}{\begin{tcolorbox}}{\end{tcolorbox}}
+\newcommand{\encabeza}[2]{\vspace*{3pt}{\sffamily\scriptsize\bfseries\color{teal}#1}\par\vspace{4pt}{\sffamily\LARGE\bfseries\color{navy}#2}\par\vspace{5pt}{\color{coral}\rule{1.1cm}{2.3pt}}\par\vspace{3pt}}
+\newcommand{\er}{\mathbf e_r}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\nota}[1]{{\small\color{muted}#1}\par}
+\newcommand{\escena}[3]{\subsection{#1}\noindent\begin{minipage}[c]{.28\linewidth}\includegraphics[width=\linewidth]{figuras/caso_#2.pdf}\end{minipage}\hfill\begin{minipage}[c]{.68\linewidth}\small #3\end{minipage}\par\vspace{4pt}}
+\AtBeginDocument{\renewcommand{\contentsname}{Índice}}
